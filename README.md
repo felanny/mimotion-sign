@@ -123,14 +123,20 @@ repo-sync:
 ## 六、执行逻辑
 
 1、执行逻辑来自于
+
 https://github.com/geoisam/FuckScripts/blob/1002fc17e28e0d9f5f83af80e62cbd0c57fb47eb/zepplife.py
 
 2、批次逻辑来自于
+
 https://github.com/Li-safe/mimotion/blob/master/.github/workflows/run.yml
 
 3、关键逻辑点
+
 同一个IP在同一小时内，最多执行4个账号
+
 (1)方案1，创建多个仓库，每个仓库处理4个账号
+
 (2)方案2，每次执行4个账号，延迟1小时后，再继续执行后续的账号
+
 当前使用方案2，多批次执行，代码逻辑每次处理3个账号，并非4个。
 
