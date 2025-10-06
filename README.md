@@ -85,7 +85,7 @@ repo-sync:
 ### 方式2、完善随机数逻辑
 逻辑来自：https://github.com/TonyJiangWJ/mimotion
 
-添加名为 `CRON_HOURS` 的repository variable，示例值：2,4,6,10,14,22
+添加名为 `CRON_HOURS` 的repository variable，示例值：0,2,4,6,8,10,12,14,22
 
 添加 cron_change_time 和 cron_convert.sh 2个文件
 
@@ -120,4 +120,17 @@ repo-sync:
 
 8:05分执行后，将从小时中剔除8，即8:00-8:59都不会再重复执行
 
+## 六、执行逻辑
+
+1、执行逻辑来自于
+https://github.com/geoisam/FuckScripts/blob/1002fc17e28e0d9f5f83af80e62cbd0c57fb47eb/zepplife.py
+
+2、批次逻辑来自于
+https://github.com/Li-safe/mimotion/blob/master/.github/workflows/run.yml
+
+3、关键逻辑点
+同一个IP在同一小时内，最多执行4个账号
+(1)方案1，创建多个仓库，每个仓库处理4个账号
+(2)方案2，每次执行4个账号，延迟1小时后，再继续执行后续的账号
+当前使用方案2，多批次执行，代码逻辑每次处理3个账号，并非4个。
 
